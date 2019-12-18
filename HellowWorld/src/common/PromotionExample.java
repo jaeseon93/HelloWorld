@@ -8,6 +8,6 @@ public class PromotionExample {
 //		int intValue = byteValue;
 //		int intValue = charValue;
 //		short shortValue = charValue;
-		double doubleValue = byteValue;
+//		double doubleValue = byteValue;
 	}
 }
