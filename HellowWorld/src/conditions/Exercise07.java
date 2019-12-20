@@ -25,6 +25,8 @@ public class Exercise07 {
 				balance = balance - amt;
 			} else if (menu == 3) {
 				System.out.println("잔액> " + balance);
+				
+				
 			} else if (menu == 4) {
 				run = false;
 			}
