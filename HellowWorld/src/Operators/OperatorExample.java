@@ -16,7 +16,7 @@ public class OperatorExample {
 	}
 
 	public static void multi(int a, int b) {
-		// TODO Auto-generated method stub
+		
 		int result = a * b;
 		System.out.println("method 결과값은 : " + result);
 
