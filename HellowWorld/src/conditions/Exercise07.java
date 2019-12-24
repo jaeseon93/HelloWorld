@@ -14,8 +14,8 @@ public class Exercise07 {
 			System.out.println("1. 예금 | 2. 출금 | 3. 잔고 | 4. 종료");
 			System.out.println("******************************");
 			System.out.println("선택> ");
-			menu = scanner.nextInt();
-			scanner.nextLine();
+			menu = scanner.nextInt(); //숫자를넣음
+			scanner.nextLine(); //문자열
 			if (menu == 1) {
 				System.out.println("예금액> ");
 				amt = scanner.nextInt();
