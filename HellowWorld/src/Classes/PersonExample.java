@@ -47,8 +47,14 @@ public class PersonExample {
 		System.out.println("입력> ");
 		inputString = scanner.nextLine();
 		System.out.println(inputString);
-		//
 		
+		for (Person p : personAry) {
+			p.name();
+		
+		if(personAry[1].personName.equals(p.name()) {
+			
+		}
+		}
 		
 
 	}

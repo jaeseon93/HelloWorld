@@ -22,6 +22,9 @@ public class Person {
 	void introduce() {
 		System.out.println("이름은 " + personName + "이고 나이는" + age + "," + "좋아하는 음식은" + personFood + "입니다.");
 	}
+	void name() {
+		System.out.println("펭수");
+	}
 	void sleep() {
 		System.out.println("꿀잠잔다.");
 	}
