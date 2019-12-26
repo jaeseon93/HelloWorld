@@ -1,7 +1,7 @@
 package Classes;
 
 public class Account {
-	// 필드 만들기
+	// 필드 만들기 (계좌번호,계좌주,잔액)
 	private String ano;
 	private String owner;
 	private int balance;
@@ -17,6 +17,7 @@ public class Account {
 		this.balance = balance;
 	}
 
+	//필드가 private으로 되어있기 때문에 외부에서 접근할수있도록 getter,setter만들어주기.
 	public String getAno() {
 		return ano;
 	}
