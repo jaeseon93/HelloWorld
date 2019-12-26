@@ -17,7 +17,7 @@ public class StringEqualsExample5 {
 //        } else {
 //        	System.out.println("다른 내용입니다.");
 	
-    int score = 75;
+    int score = 60;
     char grade;
     grade = (score > 90) ? 'A' : (score > 80) ? 'B' : (score > 70) ? 'C' : 'D';
     

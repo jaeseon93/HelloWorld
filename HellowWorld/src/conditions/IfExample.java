@@ -2,9 +2,9 @@ package conditions;
 
 public class IfExample {
 	public static void main(String[] args) {
-		int score = 93;
+		int score = 97;
 
-		if (score >= 93) {
+		if (score >= 90) {
 			if (score >= 95) {
 				System.out.println("점수가 95보다 큽니다.");
 				System.out.println("등급은 A+ 입니다.");
