@@ -11,7 +11,7 @@ public class Account {
 		
 	}
 	
-	public Account(String ano, String owner, int banlance) {
+	public Account(String ano, String owner, int balance) {
 		this.ano = ano;
 		this.owner = owner;
 		this.balance = balance;
@@ -41,5 +41,10 @@ public class Account {
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
+
+	public String toString() {
+		return "Account [계좌번호=" + ano + ", 계좌주=" + owner + ", 잔액=" + balance + "]";
+	}
+	
 
 }

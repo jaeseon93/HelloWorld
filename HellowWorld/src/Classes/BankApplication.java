@@ -14,14 +14,14 @@ public class BankApplication {
 
 	public static void main(String[] args) {
 		boolean run = true;
+		//break구문을 만나기 전까지는 계속해서 반복 (while구문)
 		while (run) {
 			System.out.println("=======================================");
 			System.out.println("1.계좌생성 | 2.계좌목록 | 3.예금 | 4.출금 | 5.종료 ");
 			System.out.println("=======================================");
 			System.out.print("선택> "); // 사용자가 바로 입력하도록 ln붙이지않기!!
-
 			// 사용자가 입력한 숫자를 읽겠다는 뜻.
-			int menu = sc.nextInt();
+			int menu = sc.nextInt();sc.nextLine();
 
 			if (menu == 1) {
 				createAccount(); // 밑에 선언한 메소드를 호출하도록 적음.
@@ -44,13 +44,12 @@ public class BankApplication {
 		System.out.println("계좌생성 : ");
 		System.out.println("---------");
 
-		System.out.print("계좌번호 : ");
-		String ano = sc.next();
-		System.out.print("계좌주 : ");
-		String owner = sc.next();
-		System.out.print("초기입금액 : ");
-		int balance = sc.nextInt();
-
+		System.out.print("계좌번호 입력: ");
+		String ano = sc.nextLine();     //nextLine은 String타입을 반환
+		System.out.print("계좌주 입력: ");
+		String owner = sc.nextLine();
+		System.out.print("초기입금액 입력: ");
+		int balance = sc.nextInt();  //nextInt은 int타입을 반환
 		// 하나의 계좌 객체를 만들기
 		Account newAccount = new Account(ano, owner, balance);
 		// 배열의 null값에 하나하나씩 잘 들어가도록 명력문만들어주기. ==null값인지 조사를한다는뜻.
@@ -58,7 +57,7 @@ public class BankApplication {
 			if (accountArray[i] == null) {
 				accountArray[i] = newAccount;
 				System.out.println("결과: 계좌가 생성되었습니다.");
-				break;
+				break;   //break를 하지 않으면 100건을 다 넣어버림
 			}
 		}
 	}
@@ -124,17 +123,17 @@ public class BankApplication {
 	}
 
 //	 Account 배열에서 ano와 동일한 Account 객체 찾기
-	private static Account findAccount(String ano) {
+	 static Account findAccount(String ano) {
 		Account account = null;
 		for (int i = 0; i < accountArray.length; i++) {
 			if (accountArray[i] != null) {
-				String dbAno = accountArray[i].getAno();
-				if (dbAno.equals(ano)) {
+				String anct = accountArray[i].getAno();
+				if (anct.equals(ano)) {
 					account = accountArray[i];
 					break;
 				}
 			}
 		}
-		return null;
+		return account;
 	}
 }
