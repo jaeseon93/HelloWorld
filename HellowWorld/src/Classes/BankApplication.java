@@ -23,7 +23,7 @@ public class BankApplication {
 			// 사용자가 입력한 숫자를 읽겠다는 뜻.
 			int menu = sc.nextInt();sc.nextLine();
 
-			if (menu == 1) {
+			if (menu == 1) { 
 				createAccount(); // 밑에 선언한 메소드를 호출하도록 적음.
 			} else if (menu == 2) {
 				accountList();
@@ -41,16 +41,16 @@ public class BankApplication {
 	// 계좌 생성하기 (1번화면 출력하기)
 	private static void createAccount() {
 		System.out.println("---------");
-		System.out.println("계좌생성 : ");
+		System.out.println("계좌생성  ");
 		System.out.println("---------");
-
+		// 하나의 계좌 객체를 만들기
 		System.out.print("계좌번호 입력: ");
 		String ano = sc.nextLine();     //nextLine은 String타입을 반환
 		System.out.print("계좌주 입력: ");
 		String owner = sc.nextLine();
 		System.out.print("초기입금액 입력: ");
 		int balance = sc.nextInt();  //nextInt은 int타입을 반환
-		// 하나의 계좌 객체를 만들기
+		
 		Account newAccount = new Account(ano, owner, balance);
 		// 배열의 null값에 하나하나씩 잘 들어가도록 명력문만들어주기. ==null값인지 조사를한다는뜻.
 		for (int i = 0; i < accountArray.length; i++) {
