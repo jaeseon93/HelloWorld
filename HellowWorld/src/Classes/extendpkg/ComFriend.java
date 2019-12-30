@@ -5,6 +5,7 @@ public class ComFriend extends Friend {
    private String company;
    private String dept;
    
+  
 public ComFriend(String name, String phone, String company, String dept) {
 	super(name, phone);
 	this.company = company;

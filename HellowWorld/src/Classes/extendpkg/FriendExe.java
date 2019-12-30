@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import Classes.Account;
 
-public class FriendExe {
+public class FriendExe  {
 
 	// 회사친구와 학교친구의 연락처를 조회하는 프로그램을 만들기.
 //		1)입력 2)조회 3)리스트 4)종료
@@ -38,8 +38,6 @@ public class FriendExe {
 
 	// 1번.입력화면 출력하기
 	private static void insert() {
-		System.out.println("---------------");
-
 		System.out.println("===========================");
 		System.out.println("1.대학교동창 | 2.회사동료 | 3.그외 |");
 		System.out.println("===========================");
@@ -114,38 +112,62 @@ public class FriendExe {
 			}
 		}
 	}
+
 //친구 이름으로 조회하기.
 	private static void friendSearch() {
-		System.out.println("---------");
-		System.out.println("친구조회하기 : ");
-		String name = sc.nextLine(); 
-		System.out.println("---------");
-		
-
+		System.out.println("==================");
+		System.out.println("친구조회 하기  ");
+		System.out.println("==================");
+		System.out.print("이륾으로 조회> "); sc.nextLine();
+		sc.nextLine();
 		for (int i = 0; i < friendArray.length; i++) {
 			Friend friend = friendArray[i];
 			if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
 				System.out.print(friend.getName()); // getter를 이용해서 접근함
 				System.out.print("    ");
+				System.out.println();
 			}
 		}
 	}
 
-	// 친구 목록 출력하기.
-	//
+// 친구 목록 출력하기.
+// 회사친구면 이름,폰번호,회사명,부서 출력
+// 학교친구면 이름,폰번호,학교명,전공 출력
 	private static void friendList() {
-		System.out.println("---------");
-		System.out.println("친구리스트 : ");
-		System.out.println("---------");
-
+		System.out.println("==================");
+		System.out.println("친구목록 보기  ");
+		System.out.println("==================");
+		System.out.print("조회> "); sc.nextLine();
+		sc.nextLine();
+		
 		for (int i = 0; i < friendArray.length; i++) {
 			Friend friend = friendArray[i];
 			if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
-				System.out.print(friend.getName()); // getter를 이용해서 접근함
-				System.out.print("    ");
-				
+				System.out.print("이름: " + friend.getName()); // getter를 이용해서 접근함
+				System.out.print("   ");
+				System.out.print("폰번호: " + friend.getPhone());
+				System.out.print("   ");
+			
+//				System.out.println(friend.getCompany());
+//				System.out.print("    ");
+//				System.out.println(cf.getDept());
+//				System.out.print("    ");
 			}
 
 		}
+	}
+
+	static Friend findFriend(String name) {
+		Friend friend = null;
+		for (int i = 0; i < friendArray.length; i++) {
+			if (friendArray[i] != null) {
+				String findf = friendArray[i].getName();
+				if (findf.equals(name)) {
+					friend = friendArray[i];
+					break;
+				}
+			}
+		}
+		return friend;
 	}
 }

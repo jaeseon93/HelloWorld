@@ -29,6 +29,7 @@ public void setMajor(String major) {
 	this.major = major;
 }
 
+
 //to String 만들기
 @Override
 public String toString() {
