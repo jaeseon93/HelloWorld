@@ -143,6 +143,7 @@ public class FriendExe {
 			if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
 				System.out.print(friend.getName()); // getter를 이용해서 접근함
 				System.out.print("    ");
+				
 			}
 
 		}
