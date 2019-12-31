@@ -11,6 +11,9 @@ public UnivFriend(String name, String phone, String univ, String major) {
 	this.major = major;
 }
 
+public UnivFriend() {
+	
+}
 
 //getter setter 추가
 public String getUniv() {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import Classes.Account;
 
-public class FriendExe  {
+public class FriendExe {
 
 	// 회사친구와 학교친구의 연락처를 조회하는 프로그램을 만들기.
 //		1)입력 2)조회 3)리스트 4)종료
@@ -22,6 +22,7 @@ public class FriendExe  {
 			System.out.println("=============================");
 			System.out.print("선택> "); // 사용자가 바로 입력하도록 ln붙이지않기!!
 			int menu = sc.nextInt();
+			sc.nextLine();
 
 			if (menu == 1) {
 				insert(); // 밑에 메소드를 선언해주기.
@@ -43,6 +44,7 @@ public class FriendExe  {
 		System.out.println("===========================");
 		System.out.print("입력> "); // 사용자가 바로 입력하도록 ln붙이지않기!!
 		int menu = sc.nextInt();
+		sc.nextLine(); // 엔터의 값이 있기때문에 라인붙이기
 		// 하나의 값들만 입력하고 빠져나올것이기 때문에 반복문 불필요
 		if (menu == 1) {
 			univFriend(); // 밑에 메소드를 선언해주기.
@@ -60,7 +62,6 @@ public class FriendExe  {
 	private static void univFriend() {
 		System.out.print("동창이름 입력: ");
 		String name = sc.nextLine();
-		sc.nextLine();
 		System.out.print("폰번호 입력: ");
 		String phone = sc.nextLine();
 		System.out.print("대학이름 입력: ");
@@ -80,7 +81,6 @@ public class FriendExe  {
 	private static void comFriend() {
 		System.out.print("회사동료 이름 입력: ");
 		String name = sc.nextLine();
-		sc.nextLine();
 		System.out.print("폰번호 입력: ");
 		String phone = sc.nextLine();
 		System.out.print("회사 이름 입력: ");
@@ -100,7 +100,6 @@ public class FriendExe  {
 	private static void etc() {
 		System.out.print("그외 이름 입력: ");
 		String name = sc.nextLine();
-		sc.nextLine();
 		System.out.print("폰번호 입력: ");
 		String phone = sc.nextLine();
 		Friend newetc = new Friend(name, phone);
@@ -114,45 +113,81 @@ public class FriendExe  {
 	}
 
 //친구 이름으로 조회하기.
+//이름으로 조회했을 때 , 회사친구면 입력한 회사 친구의 정보들이 다 출력, 학교친구면 학교 친구의 정보들이 다 출력, 그외친구도 다 출력되야함
 	private static void friendSearch() {
 		System.out.println("==================");
 		System.out.println("친구조회 하기  ");
 		System.out.println("==================");
-		System.out.print("이륾으로 조회> "); sc.nextLine();
-		sc.nextLine();
-		for (int i = 0; i < friendArray.length; i++) {
-			Friend friend = friendArray[i];
-			if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
-				System.out.print(friend.getName()); // getter를 이용해서 접근함
-				System.out.print("    ");
+		System.out.print("이름으로 조회> ");
+		String name = sc.nextLine();
+		System.out.println("조회결과> ");
+		// friend 를 findfriend에서 찾아오기
+		Friend friend = findFriend(name);
+		if (friend instanceof ComFriend) { // 부모인스턴스를 자식인스턴스로 강제 형변환
+			ComFriend cf = (ComFriend) friend;
+			if (friend != null) {
+				System.out.print("이름: " + cf.getName() + "   "); // getter를 이용해서 접근함
+				System.out.print("폰번호: " + cf.getPhone() + "   ");
+				System.out.print("회사이름: " + cf.getCompany() + "   ");
+				System.out.print("부서이름: " + cf.getDept() + "   ");
+				System.out.println();
+			} 
+
+		}else if (friend instanceof UnivFriend) { // 부모인스턴스를 자식인스턴스로 강제 형변환
+				UnivFriend uf = (UnivFriend) friend;
+				if (friend != null) {
+					System.out.print("이름: " + uf.getName() + "   "); // getter를 이용해서 접근함
+					System.out.print("폰번호: " + uf.getPhone() + "   ");
+					System.out.print("학교이름: " + uf.getUniv() + "   ");
+					System.out.print("전공: " + uf.getMajor() + "   ");
+					System.out.println();
+				}
+			} else if (friend != null) {
+				System.out.print("이름: " + friend.getName() + "   "); // getter를 이용해서 접근함
+				System.out.print("폰번호: " + friend.getPhone() + "   ");
 				System.out.println();
 			}
-		}
 	}
 
 // 친구 목록 출력하기.
 // 회사친구면 이름,폰번호,회사명,부서 출력
 // 학교친구면 이름,폰번호,학교명,전공 출력
+// 그외 이름 폰번호 - friend호출(부모)
 	private static void friendList() {
 		System.out.println("==================");
 		System.out.println("친구목록 보기  ");
 		System.out.println("==================");
-		System.out.print("조회> "); sc.nextLine();
-		sc.nextLine();
-		
+//		System.out.print("조회> ");
+//		sc.nextLine();
+
 		for (int i = 0; i < friendArray.length; i++) {
 			Friend friend = friendArray[i];
-			if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
-				System.out.print("이름: " + friend.getName()); // getter를 이용해서 접근함
-				System.out.print("   ");
-				System.out.print("폰번호: " + friend.getPhone());
-				System.out.print("   ");
-			
-//				System.out.println(friend.getCompany());
-//				System.out.print("    ");
-//				System.out.println(cf.getDept());
-//				System.out.print("    ");
+			if (friend != null) {
+			System.out.println(friend);
 			}
+//			if (friend instanceof ComFriend) { // 부모인스턴스를 자식인스턴스로 강제 형변환
+//				ComFriend cf = (ComFriend) friend; // friend변수에 담겨있는 comfriend
+//				if (friend != null) { // friend에 값이 저장되어있다면~(널이아니면의뜻)
+//					System.out.print("이름: " + cf.getName() + "   "); // getter를 이용해서 접근함
+//					System.out.print("폰번호: " + cf.getPhone() + "   ");
+//					System.out.print("회사이름: " + cf.getCompany() + "   ");
+//					System.out.print("부서이름: " + cf.getDept() + "   ");
+//					System.out.println();
+//				}
+//			} else if (friend instanceof UnivFriend) { // 부모인스턴스를 자식인스턴스로 강제 형변환
+//				UnivFriend uf = (UnivFriend) friend;
+//				if (friend != null) {
+//					System.out.print("이름: " + uf.getName() + "   "); // getter를 이용해서 접근함
+//					System.out.print("폰번호: " + uf.getPhone() + "   ");
+//					System.out.print("학교이름: " + uf.getUniv() + "   ");
+//					System.out.print("전공: " + uf.getMajor() + "   ");
+//					System.out.println();
+//				}
+//			} else if (friend != null) {
+//				System.out.print("이름: " + friend.getName() + "   "); // getter를 이용해서 접근함
+//				System.out.print("폰번호: " + friend.getPhone() + "   ");
+//				System.out.println();
+//			}
 
 		}
 	}
