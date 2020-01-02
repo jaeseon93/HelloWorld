@@ -88,7 +88,19 @@ public class SwimmingpoolMemberExe {
 		System.out.println("=========");
 		System.out.println("회원삭제 ");
 		System.out.println("=========");
-		
+		System.out.print("삭제 할 회원아이디 조회> ");
+		int memberId = sc.nextInt();
+		System.out.println("조회결과 = ");
+		SwimmingPool sp = findMem(memberId);
+		if (sp != null) {
+			System.out.print("회원번호: " + sp.getMemberId() + "   ");
+			System.out.print("회원이름: " + sp.getName() + "   ");
+			System.out.print("회원 폰번호: " + sp.getPhone() + "   ");
+			System.out.println();			
+		} else{
+			
+			
+		}
 
 	}
 
